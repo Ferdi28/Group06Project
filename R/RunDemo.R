@@ -1,11 +1,11 @@
-#' @title Shiny Application of Montecarlo estimation of pi
-#' @description Run a shiny app for Montecarlo estimation of pi
+#' @title Shiny Application of Indeed Job Map
+#' @description Run a shiny app to display Indeed Jobs on a map
 #' @import shiny
 #' @import tidyverse
 #' @import lubridate
 #' @export
 runDemo <- function() {
-  appDir <- system.file("shiny-examples", "pi", package = "ptds2019hw4g06")
+  appDir <- system.file("shiny-examples", "Indeed_search", package = "Group06Project")
   if (appDir == "R/RunDemo.R") {
     stop(
       "Could not find example directory. Try re-installing ptds2019hw4g06.",
