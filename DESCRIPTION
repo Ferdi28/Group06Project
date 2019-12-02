@@ -1,12 +1,22 @@
 Package: Group06Project
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Indeed Job Map
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author@R: c(person("Ferdinando", "Pepe", role = aut), 
+  person("Niels", "Saalfeldt"), 
+  person("Rebecca", "Silden"), 
+  person("Emily", "Trentmann"), 
+  person("Edvard", "Edding"))
+Maintainer: Ferdinando Pepe <Ferdinando.pepe@unil.ch>
+Description: An interactive Map to lookup employment opportunities taken from the website Indeed. 
+License: GNU
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.1
+Imports: 
+  Rcpp,
+  shiny(>= 1.4.0),
+  tidyverse,
+  ggplot2,  
+  useful 
+RoxygenNote: 6.1.1
+Depends: R(>= 3.6.0)
