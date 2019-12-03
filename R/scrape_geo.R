@@ -31,36 +31,21 @@ saveRDS(data_eco, file = "new_data_economics.rds")
 map_ready_df <- new_data_economics %>%
   filter(between(Latitude,45.83203, 47.69732) & between(Longitude, 6.07544, 9.83723 ))
 
+coordinates <- new_data_economics %>%
+  group_by(city, Latitude, Longitude) %>%
+  count() %>%
+  na.omit() %>%
+  as.data.frame()
 
-#Create a swiss map object
+coordinates <- coordinates[,-4]
 
-world_map <- getMap(resolution = "high")
+names(geodata_cities)[3]<-paste("Longitude")
+names(geodata_cities)[2]<-paste("Latitude")
 
-which(sapply(1:243, function(x) world_map@polygons[[x]]@ID) == "Switzerland")
+cities_coord <- rbind(geodata_cities, coordinates) %>%
+  filter(between(Latitude,45.83203, 47.69732) & between(Longitude, 6.07544, 9.83723 ))
 
-switzerland <- world_map@polygons[[40]]@Polygons[[1]]@coords %>%
-  as_tibble()
-names(switzerland)[1]<-paste("Longitude")
-names(switzerland)[2]<-paste("Latitude")
+cities_coord <- cities_coord[!duplicated(cities_coord$city), ]
 
+saveRDS(cities_coord, file = "cities_coord.rds")
 
-#Function
-
-indeed_map0 <- function(switzerland,jobs_data_frame){
-
-  ggplot() +
-    labs( title = "Jobs location") +
-    geom_polygon(data = switzerland,aes(x = Longitude, y = Latitude),color = "black", alpha = 0.3) +
-    coord_fixed(1.3) +
-    geom_point(data = jobs_data_frame, aes(Longitude,Latitude),color= "steelblue") +
-
-    guides(size = guide_legend(order = 1),
-           color = guide_legend(order = 2)) +
-
-    theme(
-      legend.key = element_rect(fill=NA),
-      aspect.ratio = 0.75:0.75,
-      panel.background = element_blank(),
-      axis.line = element_line(colour = "black"),
-      panel.border = element_rect(colour = "black", fill=NA, size=1))
-}
