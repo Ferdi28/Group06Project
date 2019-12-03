@@ -20,6 +20,13 @@ indeed_map <- function(switzerland,jobs_data_frame){
 }
 
 indeed_map(switzerland, Map_ready_df)
+Map_ready_df %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(clusterOption=markerClusterOptions(), label = Map_ready_df$company,
+             popup = paste(Map_ready_df$job_title,"<br>","<a href=", Map_ready_df$link,">link<a/>"))
+
+
 
 
 
