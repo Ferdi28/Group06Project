@@ -3,6 +3,7 @@
 #' @import shiny
 #' @import tidyverse
 #' @import lubridate
+#' @import leaflet
 #' @export
 runDemo <- function() {
   appDir <- system.file("shiny-examples", "Indeed_search", package = "Group06Project")
