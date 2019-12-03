@@ -36,6 +36,7 @@ indeed_map <- function(switzerland,jobs_data_frame){
 }
 
 indeed_map(switzerland, Map_ready_df)
+
 Map_ready_df %>%
   leaflet() %>%
   addTiles() %>%
@@ -43,11 +44,9 @@ Map_ready_df %>%
              popup = paste(Map_ready_df$job_title,"<br>","<a href=", Map_ready_df$link,">link<a/>"))
 
 
-
-
-
 # a way to make an interractive map
 locations_sf <- Map_ready_df %>%
   na.omit() %>%
   st_as_sf( coords = c("Longitude", "Latitude"), crs = 4326)
 mapview(locations_sf)
+
