@@ -1,4 +1,20 @@
+#Create a swiss map object
 
+world_map <- getMap(resolution = "high")
+
+which(sapply(1:243, function(x) world_map@polygons[[x]]@ID) == "Switzerland")
+
+switzerland <- world_map@polygons[[40]]@Polygons[[1]]@coords %>%
+  as_tibble()
+names(switzerland)[1]<-paste("Longitude")
+names(switzerland)[2]<-paste("Latitude")
+
+#filter correct data
+
+map_ready_df <- new_data_economics %>%
+  filter(between(Latitude,45.83203, 47.69732) & between(Longitude, 6.07544, 9.83723 ))
+
+#Function
 
 indeed_map <- function(switzerland,jobs_data_frame){
 
@@ -24,5 +40,7 @@ indeed_map(switzerland, Map_ready_df)
 
 
 # a way to make an interractive map
-locations_sf <- Map_ready_df %>% na.omit() %>%  st_as_sf( coords = c("Longitude", "Latitude"), crs = 4326)
+locations_sf <- Map_ready_df %>%
+  na.omit() %>%
+  st_as_sf( coords = c("Longitude", "Latitude"), crs = 4326)
 mapview(locations_sf)

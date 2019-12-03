@@ -24,5 +24,5 @@ names(data_eco)[9]<-paste("Latitude")
 saveRDS(data_eco, file = "new_data_economics.rds")
 
 # google map made some wrong calculations about some coordinates so we need to remove them
-Map_ready_df <- new_data_economics %>%
+map_ready_df <- new_data_economics %>%
   filter(between(Latitude,45.83203, 47.69732) & between(Longitude, 6.07544, 9.83723 ))
