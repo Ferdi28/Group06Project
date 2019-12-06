@@ -5,7 +5,7 @@
 #' @import lubridate
 #' @import leaflet
 #' @export
-runDemo <- function() {
+run_Indeed <- function() {
   appDir <- system.file("shiny-examples", "indeed_search", package = "group6project")
   if (appDir == "R/RunDemo.R") {
     stop(

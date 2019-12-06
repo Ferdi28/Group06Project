@@ -2,7 +2,7 @@
 
 export(indeed_map)
 export(map_ready_df)
-export(runDemo)
+export(run_Indeed)
 import(leaflet)
 import(lubridate)
 import(magrittr)
