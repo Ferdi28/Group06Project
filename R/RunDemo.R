@@ -6,7 +6,7 @@
 #' @import leaflet
 #' @export
 runDemo <- function() {
-  appDir <- system.file("shiny-examples", "Indeed_search", package = "Group06Project")
+  appDir <- system.file("shiny-examples", "indeed_search", package = "group6project")
   if (appDir == "R/RunDemo.R") {
     stop(
       "Could not find example directory. Try re-installing ptds2019hw4g06.",
