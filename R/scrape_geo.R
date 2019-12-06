@@ -49,3 +49,7 @@ cities_coord <- cities_coord[!duplicated(cities_coord$city), ]
 
 saveRDS(cities_coord, file = "cities_coord.rds")
 
+
+#load useful data
+indeed_data <- readRDS(file = here :: here("prepared Data/data_economics_consulting_communications.rds"))
+#function to create data set with coordinates

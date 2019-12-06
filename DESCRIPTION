@@ -18,5 +18,5 @@ Imports:
   tidyverse,
   ggplot2,  
   useful 
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.1
 Depends: R(>= 3.6.0)
