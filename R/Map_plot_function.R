@@ -1,19 +1,22 @@
 #' @title Indeed data frame
-#' @description create a data frame with indeed jobs and their corresponding latitiude longitude based on the city
+#' @description Create a data frame with indeed jobs and their corresponding latitiude longitude based on the city
+#' \cr Please make sure u use the following code in order to have the data for the appropriate job category:\cr
+#' - indeed_data <- readRDS(file = here :: here("prepared Data/#NameOfDesiredDataFrame.rds")) where the Data Frame comes from
+#' the (prepared Data) folder
 #' @param indeed_data A {Data Frame} scraped using the method from this package's authors
 #' @param cities_coord A {Data Frame} with swiss cities names and respective Latitiude/Longitude, also provided with this package
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{6 variables linked to job offers from indeed}
 #'      \item{2 variables that contain Latitiude and Longitude for the job offers}
-#' @import tidyverse
+#' @import magrittr
 #' @examples
 #'map_ready_df(indeed_data)
 #' @export
 map_ready_df <- function(indeed_data, cities_coord){
 
    #load useful data
-  cities_coord <- readRDS(file = heer :: here("prepared Data/cities_coord.rds"))
+  cities_coord <- readRDS(file = here :: here("prepared Data/cities_coord.rds"))
   #check if input is correct
   if (length(indeed_data$city) == 0){
     stop("Please ensure that the inputed data frame has columns named city, Latitude and Longitude")
