@@ -20,7 +20,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
 
         mainPanel(
 
-            plotOutput("Map"),
+            leafletOutput("Map"),
         )
     )
 ))
