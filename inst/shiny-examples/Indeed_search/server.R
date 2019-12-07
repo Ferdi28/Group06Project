@@ -2,7 +2,6 @@ library(shiny)
 library(group6project)
 library(leaflet)
 library(tidyverse)
-library(lubridate)
 
 shinyServer(function(input, output) {
 
