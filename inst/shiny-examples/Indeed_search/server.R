@@ -8,20 +8,17 @@ shinyServer(function(input, output) {
 
  #load data as a reactive event
 
-  indeed_data <- eventReactive(input$goIndeed, {
+  datasets <- reactiveValues()
     #read indeed data
-    readRDS(file = input$file1)
-  })
-
-  cities_coord <- eventReactive(input$goCities, {
+    observeEvent (input$go, {datasets$indeed_data <- readRDS(input$file1)
+    })
     #read cities_coord data
-    readRDS( file = input$file2)
+    observeEvent (input$go, {datasets$cities_coord <- readRDS(input$file2)
     })
 
-    output$Map <-  renderLeaflet({
-      indeed_data %>%
-        map_ready_df(cities_coord) %>%
+  output$Map <-  renderLeaflet({
+      datasets[["indeed_data"]] %>%
+        map_ready_df(datasets[["cities_coord"]]) %>%
         indeed_map()
     })
-
 })
