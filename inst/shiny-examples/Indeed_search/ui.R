@@ -15,7 +15,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 accept = c(".rds", ".RDS")),
 
                       actionButton(inputId = "go",
-                                   label = "load files")
+                                   label = "Load Files/ Display Map")
         ),
 
         mainPanel(

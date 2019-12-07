@@ -46,7 +46,6 @@ indeed_map <- function(map_ready_df){
   if(length(map_ready_df$city) == 0 | length(map_ready_df$Latitude) == 0 | length(map_ready_df$Longitude) == 0 |
      length(map_ready_df$link) == 0 | length(map_ready_df$job_title) == 0)
     stop("Please use the output Data Frame from map_ready_df")
-  #setting the radius
 map_ready_df %>%
   leaflet :: leaflet() %>%
   leaflet :: addTiles() %>%
