@@ -1,18 +1,27 @@
 library(shiny)
-library(Group06Project)
+library(group6project)
 library(leaflet)
 library(tidyverse)
 library(lubridate)
 
 shinyServer(function(input, output) {
 
-  indeed_data <- readRDS(file = here :: here("prepared Data/data_economics_consulting_communications.rds"))
+ #load data as a reactive event
+
+  indeed_data <- eventReactive(input$goIndeed, {
+    #read indeed data
+    readRDS(file = input$file1)
+  })
+
+  cities_coord <- eventReactive(input$goCities, {
+    #read cities_coord data
+    readRDS( file = input$file2)
+    })
 
     output$Map <-  renderLeaflet({
       indeed_data %>%
-        map_ready_df() %>%
+        map_ready_df(cities_coord) %>%
         indeed_map()
-    },
-    width = 500, height = 500)
+    })
 
 })

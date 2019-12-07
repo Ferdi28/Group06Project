@@ -15,8 +15,6 @@
 #' @export
 map_ready_df <- function(indeed_data, cities_coord){
 
-   #load useful data
-  cities_coord <- readRDS(file = here :: here("prepared Data/cities_coord.rds"))
   #check if input is correct
   if (length(indeed_data$city) == 0){
     stop("Please ensure that the inputed data frame has columns named city, Latitude and Longitude")
