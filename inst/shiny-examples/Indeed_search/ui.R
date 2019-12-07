@@ -1,4 +1,7 @@
 library(shiny)
+library(group6project)
+library(leaflet)
+library(tidyverse)
 
 shinyUI(fluidPage(theme = "bootstrap.css",
 
