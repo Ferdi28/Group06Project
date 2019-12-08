@@ -7,9 +7,9 @@
 #' @export
 run_Indeed <- function() {
   appDir <- system.file("shiny-examples", "indeed_search", package = "group6project")
-  if (appDir == "Run_Indeed/.R") {
+  if (appDir == "R/Run_Indeed.R") {
     stop(
-      "Could not find example directory. Try re-installing ptds2019hw4g06.",
+      "Could not find example directory. Try re-installing group6project.",
       call. = FALSE
     )
   }
