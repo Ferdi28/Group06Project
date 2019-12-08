@@ -1,10 +1,10 @@
 #' @title Indeed data frame
-#' @description Create a data frame with indeed jobs and their corresponding latitiude longitude based on the city
-#' \cr Please make sure u use the following code in order to have the data for the appropriate job category:\cr
+#' @description Create a data frame with indeed jobs and their corresponding latitude longitude based on the city
+#' \cr Please make sure you use the following code in order to have the data for the appropriate job category:\cr
 #' - indeed_data <- readRDS(file = here :: here("prepared Data/#NameOfDesiredDataFrame.rds")) where the Data Frame comes from
 #' the (prepared Data) folder
 #' @param indeed_data A {Data Frame} scraped using the method from this package's authors
-#' @param cities_coord A {Data Frame} with swiss cities names and respective Latitiude/Longitude, also provided with this package
+#' @param cities_coord A {Data Frame} with swiss cities names and respective Latitude/Longitude, also provided with this package
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{6 variables linked to job offers from indeed}
