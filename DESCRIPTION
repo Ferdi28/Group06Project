@@ -19,4 +19,3 @@ Imports:
   ggplot2,  
   useful 
 RoxygenNote: 7.0.1
-Depends: R(>= 3.6.0)
