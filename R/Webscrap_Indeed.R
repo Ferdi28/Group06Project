@@ -8,9 +8,8 @@ library(rvest)
 library(urltools)
 library(stringr)
 
-category <- c("data", "finance", "business", "marketing", "insurance", "economics",
-              "analyst", "accounting", "consulting", "entrepreneur", "HR", "management",
-              "communication", "government")
+# category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
+category <- c("data", "finance", "business")
 
 page_result_start <- 0
 page_result_end <- 990
@@ -125,4 +124,3 @@ dataset <- data.frame(job_title = job_titles_vector,
                       link = link_vector)
 
 saveRDS(object = dataset, file = "dataframe.rds")
-
