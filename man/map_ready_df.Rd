@@ -9,14 +9,14 @@ map_ready_df(indeed_data, cities_coord)
 \arguments{
 \item{indeed_data}{A {Data Frame} scraped using the method from this package's authors}
 
-\item{cities_coord}{A {Data Frame} with swiss cities names and respective Latitiude/Longitude, also provided with this package}
+\item{cities_coord}{A {Data Frame} with swiss cities names and respective Latitude/Longitude, also provided with this package}
 }
 \value{
 
 }
 \description{
-Create a data frame with indeed jobs and their corresponding latitiude longitude based on the city
-\cr Please make sure u use the following code in order to have the data for the appropriate job category:\cr
+Create a data frame with indeed jobs and their corresponding latitude longitude based on the city
+\cr Please make sure you use the following code in order to have the data for the appropriate job category:\cr
 - indeed_data <- readRDS(file = here :: here("prepared Data/#NameOfDesiredDataFrame.rds")) where the Data Frame comes from
 the (prepared Data) folder
 }

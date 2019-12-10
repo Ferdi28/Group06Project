@@ -13,16 +13,16 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 multiple = FALSE,
                                 accept = c(".rds", ".RDS")),
 
-                      fileInput("file2", "Upload cities_coord providede with the package",
-                                multiple = TRUE,
-                                accept = c(".rds", ".RDS")),
-
                       actionButton(inputId = "go",
-                                   label = "Load Files/ Display Map")
+                                   label = "Display Map with All The Jobs"),
 
                       selectInput(inputId = "category",
-                                  label = "select the desired category",
-                                  multiple = TRUE)
+                                  choices = c("Marketing", "HR", "Data Science", "Consulting",
+                                              "Accounting/Finance", "Business",
+                                              "Management", "Economics", "Communication"),
+                                  label = "select the desired job category",
+                                  multiple = TRUE),
+                      actionButton(inputId = "choose", label = "Confirm Choice")
         ),
 
         mainPanel(

@@ -44,7 +44,7 @@ map_ready_df <- function(indeed_data, cities_coord){
 indeed_map <- function(map_ready_df){
   #make sure input is from map_ready_df function
   if(length(map_ready_df$city) == 0 | length(map_ready_df$Latitude) == 0 | length(map_ready_df$Longitude) == 0 |
-     length(map_ready_df$link) == 0 | length(map_ready_df$job_title) == 0)
+     length(map_ready_df$link) == 0)
     stop("Please use the output Data Frame from map_ready_df")
 map_ready_df %>%
   leaflet :: leaflet() %>%
