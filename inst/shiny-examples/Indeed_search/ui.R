@@ -21,6 +21,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
             fileInput("file1", "Choose Indeed RDS File",
                                 multiple = FALSE,
                                 accept = c(".rds", ".RDS")),
+            tags$style(type="text/css",
+                       ".shiny-output-error { visibility: hidden; }",
+                       ".shiny-output-error:before { visibility: hidden; }"
+            ),
 
                       actionButton(inputId = "go",
                                    label = "Load Data Base"),
