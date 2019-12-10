@@ -20,7 +20,7 @@ shinyServer(function(input, output) {
     mytext <- reactiveValues()
 
     observeEvent(input$category, {
-    mytext$text <- (list(paste(input$category)))
+    mytext$text <- c(as.character(input$category))
     })
 
   output$Map <-  renderLeaflet({
