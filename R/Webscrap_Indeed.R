@@ -1,4 +1,6 @@
-## Run to update the dataframe containing the information about the jobs listed at Indeed. Select categories to scrap all the available pages with job listings for these categories.
+# Run to update the dataframe containing the information about the jobs listed at Indeed.
+# Select categories to scrap all the available pages with job listings for these categories.
+# Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
 
 library(robotstxt)
 library(xml2)
@@ -6,10 +8,12 @@ library(rvest)
 library(urltools)
 library(stringr)
 
-category <- c("data", "finance", "business", "marketing")
+category <- c("data", "finance", "business", "marketing", "insurance", "economics",
+              "analyst", "accounting", "consulting", "entrepreneur", "HR", "management",
+              "communication", "government")
 
 page_result_start <- 0
-page_result_end <- 990 # last page results
+page_result_end <- 990
 page_results <- seq(from = page_result_start, to = page_result_end, by = 10)
 page_results <- seq(from = 0, to = page_result_end, by = 10)
 indices = seq(from=0, to=16*length(page_results), by=16)
@@ -95,7 +99,7 @@ city <- sapply(strsplit(as.character(location_vector),', '), "[", 1)
 canton <- sapply(strsplit(as.character(location_vector),', '), "[", 2)
 
 # Preparing categories
-categories <- matrix("character", nrow = nrow(job_titles), ncol=ncol(job_titles))
+categories <- matrix("character", nrow = nrow(job_titles), ncol = ncol(job_titles))
 for (i in 1:length(category)){
   categories[ , i] <- category[i]
 }
@@ -127,20 +131,25 @@ for(i in seq_along(link_vector)) {
     html_text()
 }
 
-salary <- str_split(information, "CHF", simplify=TRUE)[,2:3]
+salary <- str_split(information, "CHF", simplify = TRUE)[,2:3]
 salary <- paste(salary[,1],salary[,2])
 
-info <- str_split(information, "CHF", simplify=TRUE)[,1]
+info <- str_split(information, "CHF", simplify = TRUE)[,1]
 info <- word(info,-1)
 job_type <- str_remove_all(info,"[[:upper:]]{2}")
 job_type <- str_remove_all(job_type,"Schweiz")    ### Add more languages if necessary
 job_type <- str_remove_all(job_type, "Aargau")    ### Add more cities if necessary
 job_type <- str_remove_all(job_type, "Bern")
 
-dataset <- data.frame(job_title = job_titles_vector, company = company_vector,
-                      city = city, canton = canton, category = category_vector,
-                      salary = salary, job_type = job_type, job_description = job_description,
+dataset <- data.frame(job_title = job_titles_vector,
+                      company = company_vector,
+                      city = city,
+                      canton = canton,
+                      category = category_vector,
+                      salary = salary,
+                      job_type = job_type,
+                      job_description = job_description,
                       link = link_vector)
 
-saveRDS(object = dataset, file = "data_finance_marketing_business.rds")
+saveRDS(object = dataset, file = "dataframe.rds")
 
