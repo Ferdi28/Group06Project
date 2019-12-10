@@ -20,7 +20,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                </br> </br>- If you would like to go back to the initial map,
                                 simply select <strong>Map With All Job Types</strong> in <strong>Choose Map</strong>.</br></br>")),
 
-                         fileInput("file1", "Choose Indeed RDS File",
+                        fileInput("file1", "Choose Indeed RDS File",
                                 multiple = FALSE,
                                 accept = c(".rds", ".RDS")),
 
@@ -31,24 +31,24 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                         tags$style(
                         HTML(".sidebar { height: 90vh; overflow-y: auto; }" )),
 
-                      actionButton(inputId = "go",
+                        actionButton(inputId = "go",
                                    label = "Load Data Base"),
-                      tags$div(
+                        tags$div(
                           HTML("</br>")),
 
-                      selectInput(inputId = "category",
+                        selectInput(inputId = "category",
                                   choices = c("Marketing", "HR", "Data Science", "Consulting",
                                               "Accounting/Finance", "Business",
                                               "Management", "Economics", "Communication"),
                                   label = "Select The Desired Job Category",
                                   multiple = TRUE),
 
-                      actionButton(inputId = "choose", label = "Confirm Choice"),
+                        actionButton(inputId = "choose", label = "Confirm Choice"),
 
-                      tags$div(
+                        tags$div(
                           HTML("</br>")),
 
-                      selectInput(inputId = "map",
+                        selectInput(inputId = "map",
                                   label = "Choose the Map",
                                   choices = c("Map With All Job Types", "Map With Selected Categories"))
 
