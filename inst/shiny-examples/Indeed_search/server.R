@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
     #read cities_coord data
     observeEvent (input$go, {datasets$cities_coord <- readRDS(input$file2$datapath)
     })
-
+  output$category <-
   output$Map <-  renderLeaflet({
 
     datasets[["indeed_data"]] %>%
