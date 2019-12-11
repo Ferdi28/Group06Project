@@ -7,6 +7,7 @@ library(xml2)
 library(rvest)
 library(urltools)
 library(stringr)
+
 indeed_scraping <- function( category = c("data", "finance", "business")){
 # category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
@@ -148,4 +149,4 @@ rename_var <- function(final_indeed_data){
 
 #save as RDS file
 saveRDS(object = final_indeed_data, file = "final_indeed_data.rds")
-
+}
