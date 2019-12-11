@@ -15,21 +15,6 @@
 #' @examples
 #'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
-indeed_scraping <- function( category = c("data", "finance", "business")){
-# Run to update the dataframe containing the information about the jobs listed at Indeed.
-# Select categories to scrap all the available pages with job listings for these categories.
-# Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
-
-library(robotstxt)
-library(xml2)
-library(rvest)
-library(urltools)
-library(stringr)
-
-#define in the beginning for example:
-category <- c("data", "finance", "business")
-number_of_pages <- 9
-
 indeed_scraping <- function(category, number_of_pages){
 # category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
@@ -170,4 +155,4 @@ final_indeed_data <- rename_var(indeed_data)
 #save as RDS file
 saveRDS(object = final_indeed_data, file = "final_indeed_data.rds")
 }
-}
+
