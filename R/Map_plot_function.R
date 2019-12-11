@@ -3,7 +3,7 @@
 #' \cr Please make sure you use the following code in order to have the data for the appropriate job category:\cr
 #' - indeed_data <- readRDS(file = here :: here("prepared Data/#NameOfDesiredDataFrame.rds")) where the Data Frame comes from
 #' the (prepared Data) folder
-#' @param indeed_data A {Data Frame} scraped using the method from this package's authors
+#' @param indeed_data A {Data Frame} scraped using the indeed_scraping function
 #' @param cities_coord A {Data Frame} with swiss cities names and respective Latitude/Longitude, also provided with this package
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{

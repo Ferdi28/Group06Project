@@ -1,24 +1,20 @@
 #' @title Indeed web scraping
-#' @description Create a data frame with indeed jobs based on the categories selected
+#' @description Create a data frame with indeed jobs based on the categories selected.
+#' ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
+#' Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
 #' @param categoryA {character vector} with inputed values of the job categories you would like to scrape
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{7 variables linked to job offers from indeed}
 #' @import magrittr
 #' @import robotstxt
+#' @import revest
+#' @import urltools
+#' @import stringr
+#' @import xml2
 #' @examples
-#'map_ready_df(indeed_data)
+#'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
-# Run to update the dataframe containing the information about the jobs listed at Indeed.
-# Select categories to scrap all the available pages with job listings for these categories.
-# Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
-
-library(robotstxt)
-library(xml2)
-library(rvest)
-library(urltools)
-library(stringr)
-
 indeed_scraping <- function( category = c("data", "finance", "business")){
 # category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
@@ -129,7 +125,7 @@ job_description <- as.character(job_description)
 
 
 #combine into a dataframe
-final_indeed_data <- data.frame(job_title = job_titles_vector,
+indeed_data <- data.frame(job_title = job_titles_vector,
                       company = company_vector,
                       city = city,
                       canton = canton,
@@ -139,9 +135,9 @@ final_indeed_data <- data.frame(job_title = job_titles_vector,
 
 
 #label categories more understandable
-rename_var <- function(final_indeed_data){
+rename_var <- function(indeed_data){
 
-  final_indeed_data <- final_indeed_data
+  final_indeed_data <- indeed_data
 
   final_indeed_data$category <- str_replace_all(final_indeed_data$category,"controlling", "Accounting/Finance")
 
@@ -157,8 +153,9 @@ rename_var <- function(final_indeed_data){
 
   return(final_indeed_data)
 }
-
+#apply function to the data frame to rename all the variables correctly
+final_indeed_data <- rename_var(indeed_data)
 #save as RDS file
 saveRDS(object = final_indeed_data, file = "final_indeed_data.rds")
 }
-indeed_scraping(category = "data")
+

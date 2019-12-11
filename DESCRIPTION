@@ -17,5 +17,6 @@ Imports:
   shiny(>= 1.4.0),
   tidyverse,
   ggplot2,  
-  useful 
+  useful,
+  
 RoxygenNote: 7.0.1
