@@ -10,7 +10,7 @@ indeed_scraping(
 )
 }
 \arguments{
-\item{category}{{character vector} with inputed values of the job categories you would like to scrape}
+\item{category}{{integer} to select the amount of pages to be scraped}
 }
 \value{
 

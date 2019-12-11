@@ -3,6 +3,7 @@
 #' ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
 #' Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
 #' @param category {character vector} with inputed values of the job categories you would like to scrape
+#' @param category {integer} to select the amount of pages to be scraped
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{7 variables linked to job offers from indeed}
