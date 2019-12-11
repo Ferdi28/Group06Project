@@ -4,7 +4,10 @@ library(leaflet)
 library(tidyverse)
 
 shinyServer(function(input, output) {
-
+  #make sure leaflet output is correct size
+  output$leaf=renderUI({
+    leafletOutput('map', width = "200%", height = input$Height)
+  })
  #load data as a reactive event
 
   datasets <- reactiveValues()
@@ -27,13 +30,13 @@ shinyServer(function(input, output) {
 
   observeEvent(input$map,{
    maps$map <- if (input$map == "Map With All Job Types"){
-      output$Map <-  renderLeaflet({
+      output$map <-  renderLeaflet({
 
         datasets[["indeed_data"]] %>%
           indeed_map()
       })
       } else if (input$map == "Map With Selected Categories"){
-        output$Map <-  renderLeaflet({
+        output$map <-  renderLeaflet({
 
           datasets[["indeed_data2"]] %>%
             indeed_map()

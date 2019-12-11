@@ -50,13 +50,18 @@ shinyUI(fluidPage(theme = "bootstrap.css",
 
                         selectInput(inputId = "map",
                                   label = "Choose the Map",
-                                  choices = c("Map With All Job Types", "Map With Selected Categories"))
+                                  choices = c("Map With All Job Types", "Map With Selected Categories")),
+                        sliderInput("Height",
+                                    "Height in Pixels:",
+                                    min = 100,
+                                    max = 2000,
+                                    value = 500)
 
         ),
 
         mainPanel(
 
-            leafletOutput("Map")
+            uiOutput("leaf")
         )
     )
 ))
