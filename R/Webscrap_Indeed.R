@@ -111,7 +111,7 @@ job_description <- vector("character", length = length(link_vector))
 
 for(i in seq_along(link_vector)) {
 
-    page <- read_html(link_vector[i]) %>%
+    job_description[i] <- read_html(link_vector[i]) %>%
     html_nodes("#jobDescriptionText") %>%
     html_text()
 }
