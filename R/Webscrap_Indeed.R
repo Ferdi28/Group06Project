@@ -122,34 +122,36 @@ for(i in seq_along(link_vector)) {
 }
 job_description <- as.character(job_description)
 
-# Scrap Job_type and Salary
-information <- vector("character", length = length(link_vector))
-for(i in seq_along(link_vector)) {
-  page <- read_html(link_vector[i])
-  information[[i]] <- page %>%
-    html_nodes(".icl-u-xs-mb--md") %>%
-    html_text()
-}
-
-salary <- str_split(information, "CHF", simplify = TRUE)[,2:3]
-salary <- paste(salary[,1],salary[,2])
-
-info <- str_split(information, "CHF", simplify = TRUE)[,1]
-info <- word(info,-1)
-job_type <- str_remove_all(info,"[[:upper:]]{2}")
-job_type <- str_remove_all(job_type,"Schweiz")    ### Add more languages if necessary
-job_type <- str_remove_all(job_type, "Aargau")    ### Add more cities if necessary
-job_type <- str_remove_all(job_type, "Bern")
-
-dataset <- data.frame(job_title = job_titles_vector,
+#combine into a dataframe
+final_indeed_data <- data.frame(job_title = job_titles_vector,
                       company = company_vector,
                       city = city,
                       canton = canton,
                       category = category_vector,
-                      salary = salary,
-                      job_type = job_type,
                       job_description = job_description,
                       link = link_vector)
 
-saveRDS(object = dataset, file = "dataframe.rds")
+
+#label categories more understandable
+rename_var <- function(final_indeed_data){
+
+  final_indeed_data <- final_indeed_data
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"controlling", "Accounting/Finance")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"data", "Data Science")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"consulting", "Consulting")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"economics", "Economics")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"communication", "Communication")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"management", "Management")
+
+  return(final_indeed_data)
+}
+
+#save as RDS file
+saveRDS(object = final_indeed_data, file = "final_indeed_data.rds")
 
