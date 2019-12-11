@@ -7,7 +7,7 @@
 map_ready_df(indeed_data, cities_coord)
 }
 \arguments{
-\item{indeed_data}{A {Data Frame} scraped using the method from this package's authors}
+\item{indeed_data}{A {Data Frame} scraped using the indeed_scraping function}
 
 \item{cities_coord}{A {Data Frame} with swiss cities names and respective Latitude/Longitude, also provided with this package}
 }

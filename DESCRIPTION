@@ -18,5 +18,4 @@ Imports:
   tidyverse,
   ggplot2,  
   useful,
-  
 RoxygenNote: 7.0.1

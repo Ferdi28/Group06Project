@@ -2,13 +2,13 @@
 #' @description Create a data frame with indeed jobs based on the categories selected.
 #' ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
 #' Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
-#' @param categoryA {character vector} with inputed values of the job categories you would like to scrape
+#' @param category {character vector} with inputed values of the job categories you would like to scrape
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{7 variables linked to job offers from indeed}
 #' @import magrittr
 #' @import robotstxt
-#' @import revest
+#' @import rvest
 #' @import urltools
 #' @import stringr
 #' @import xml2
