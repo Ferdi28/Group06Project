@@ -6,7 +6,7 @@ library(tidyverse)
 shinyServer(function(input, output) {
   #make sure leaflet output is correct size
   output$leaf=renderUI({
-    leafletOutput('map', width = "200%", height = input$Height)
+    leafletOutput('map', width = "100%", height = input$Height)
   })
  #load data as a reactive event
 
