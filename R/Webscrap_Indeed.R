@@ -10,6 +10,11 @@
 #'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
 indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 9){
+  library(robotstxt)
+  library(xml2)
+  library(rvest)
+  library(urltools)
+  library(stringr)
   # category suggestions: "marketing", "insurance", "economics",
   #"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
