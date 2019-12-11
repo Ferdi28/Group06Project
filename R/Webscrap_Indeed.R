@@ -16,13 +16,25 @@
 #'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
 indeed_scraping <- function( category = c("data", "finance", "business")){
+# Run to update the dataframe containing the information about the jobs listed at Indeed.
+# Select categories to scrap all the available pages with job listings for these categories.
+# Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
+
+library(robotstxt)
+library(xml2)
+library(rvest)
+library(urltools)
+library(stringr)
+
+#define in the beginning for example:
+category <- c("data", "finance", "business")
+number_of_pages <- 9
+
+indeed_scraping <- function(category, number_of_pages){
 # category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
 
-page_result_start <- 0
-page_result_end <- 990
-page_results <- seq(from = page_result_start, to = page_result_end, by = 10)
-page_results <- seq(from = 0, to = page_result_end, by = 10)
+page_results <- seq(from = 0 , to = number_of_pages*10, by = 10)
 indices <- seq(from=0, to=16*length(page_results), by=16)
 
 url <- "https://www.indeed.ch/jobs?q="
