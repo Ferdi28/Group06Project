@@ -1,3 +1,14 @@
+#' @title Indeed web scraping
+#' @description Create a data frame with indeed jobs based on the categories selected
+#' @param categoryA {character vector} with inputed values of the job categories you would like to scrape
+#' @return A  \code Data Frame containing the following attributes:
+#' \describe{
+#'      \item{7 variables linked to job offers from indeed}
+#' @import magrittr
+#' @import robotstxt
+#' @examples
+#'map_ready_df(indeed_data)
+#' @export
 # Run to update the dataframe containing the information about the jobs listed at Indeed.
 # Select categories to scrap all the available pages with job listings for these categories.
 # Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
@@ -125,3 +136,4 @@ dataset <- data.frame(job_title = job_titles_vector,
 
 saveRDS(object = dataset, file = "dataframe.rds")
 }
+indeed_scraping(category = "data")
