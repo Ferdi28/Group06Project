@@ -4,7 +4,10 @@
 \alias{indeed_scraping}
 \title{Indeed web scraping}
 \usage{
-indeed_scraping(category, number_of_pages)
+indeed_scraping(
+  category = c("data", "finance", "business"),
+  number_of_pages = 9
+)
 }
 \arguments{
 \item{category}{{character vector} with inputed values of the job categories you would like to scrape}

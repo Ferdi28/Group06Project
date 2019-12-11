@@ -6,18 +6,14 @@
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{7 variables linked to job offers from indeed}
-#' @import magrittr
-#' @import robotstxt
-#' @import rvest
-#' @import urltools
-#' @import stringr
-#' @import xml2
 #' @examples
 #'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
-indeed_scraping <- function(category, number_of_pages){
-# category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
+indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 9){
+  # category suggestions: "marketing", "insurance", "economics",
+  #"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
+number_of_pages <- number_of_pages
 
 page_results <- seq(from = 0 , to = number_of_pages*10, by = 10)
 indices <- seq(from=0, to=16*length(page_results), by=16)
@@ -114,7 +110,8 @@ link_vector <- paste("https://www.indeed.ch",link_vector, sep="")
 job_description <- vector("character", length = length(link_vector))
 
 for(i in seq_along(link_vector)) {
-    page <- read_html(link_vector[i])
+
+    page <- read_html(link_vector[i]) %>%
     html_nodes("#jobDescriptionText") %>%
     html_text()
 }
