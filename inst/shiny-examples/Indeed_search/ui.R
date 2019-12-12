@@ -18,11 +18,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                 accept = c(".rds", ".RDS")),
 
                       actionButton(inputId = "go",
-                                   label = "Load Files/ Display Map")
+                                   label = "Load Files/ Display Map"),
 
-                      selectInput(inputId = "category",
-                                  label = "select the desired category",
-                                  multiple = TRUE)
+
+
         ),
 
         mainPanel(
