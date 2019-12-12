@@ -19,8 +19,13 @@ indeed_scraping <- function( category = c("data", "finance", "business"), number
   # category suggestions: "marketing", "insurance", "economics",
   #"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 category <- category
+if (length(category) == 1 | length(category) == 0 | class(category) != "character"){
+  stop("Please ensure that you select at least two job categories and write them with brackets, separated by commas in a c()")
+}
 number_of_pages <- number_of_pages
-
+if (number_of_pages == 1 | length(number_of_pages) == 0 | class(number_of_pages) != "numeric" |  number_of_pages %% 1 != 0){
+  stop("Please ensure that you select at least two pages and that it is an integer")
+}
 page_results <- seq(from = 0 , to = number_of_pages*10, by = 10)
 indices <- seq(from=0, to=16*length(page_results), by=16)
 
@@ -150,6 +155,8 @@ rename_var <- function(indeed_data){
   final_indeed_data$category <- str_replace_all(final_indeed_data$category,"communication", "Communication")
 
   final_indeed_data$category <- str_replace_all(final_indeed_data$category,"management", "Management")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"finance", "Finance")
 
   return(final_indeed_data)
 }
