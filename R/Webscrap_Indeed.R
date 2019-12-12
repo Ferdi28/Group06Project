@@ -1,21 +1,28 @@
-# Run to update the dataframe containing the information about the jobs listed at Indeed.
-# Select categories to scrap all the available pages with job listings for these categories.
-# Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
+#' @title Indeed web scraping
+#' @description Create a data frame with indeed jobs based on the categories selected.
+#' ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
+#' Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
+#' @param category {character vector} with inputed values of the job categories you would like to scrape
+#' @param category {integer} to select the amount of pages to be scraped
+#' @return A  \code Data Frame containing the following attributes:
+#' \describe{
+#'      \item{7 variables linked to job offers from indeed}
+#' @examples
+#'indeed_scraping(category = c("data", "finance", "business"))
+#' @export
+indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 9){
+  library(robotstxt)
+  library(xml2)
+  library(rvest)
+  library(urltools)
+  library(stringr)
+  # category suggestions: "marketing", "insurance", "economics",
+  #"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
+category <- category
+number_of_pages <- number_of_pages
 
-library(robotstxt)
-library(xml2)
-library(rvest)
-library(urltools)
-library(stringr)
-
-# category suggestions: "marketing", "insurance", "economics", "analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
-category <- c("data", "finance", "business")
-
-page_result_start <- 0
-page_result_end <- 990
-page_results <- seq(from = page_result_start, to = page_result_end, by = 10)
-page_results <- seq(from = 0, to = page_result_end, by = 10)
-indices = seq(from=0, to=16*length(page_results), by=16)
+page_results <- seq(from = 0 , to = number_of_pages*10, by = 10)
+indices <- seq(from=0, to=16*length(page_results), by=16)
 
 url <- "https://www.indeed.ch/jobs?q="
 url <- c(paste(url, category, sep=""))
@@ -109,13 +116,16 @@ link_vector <- paste("https://www.indeed.ch",link_vector, sep="")
 job_description <- vector("character", length = length(link_vector))
 
 for(i in seq_along(link_vector)) {
-    page <- read_html(link_vector[i])
+
+    job_description[i] <- read_html(link_vector[i]) %>%
     html_nodes("#jobDescriptionText") %>%
     html_text()
 }
 job_description <- as.character(job_description)
 
-dataset <- data.frame(job_title = job_titles_vector,
+
+#combine into a dataframe
+indeed_data <- data.frame(job_title = job_titles_vector,
                       company = company_vector,
                       city = city,
                       canton = canton,
@@ -123,4 +133,29 @@ dataset <- data.frame(job_title = job_titles_vector,
                       job_description = job_description,
                       link = link_vector)
 
-saveRDS(object = dataset, file = "dataframe.rds")
+
+#label categories more understandable
+rename_var <- function(indeed_data){
+
+  final_indeed_data <- indeed_data
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"controlling", "Accounting/Finance")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"data", "Data Science")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"consulting", "Consulting")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"economics", "Economics")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"communication", "Communication")
+
+  final_indeed_data$category <- str_replace_all(final_indeed_data$category,"management", "Management")
+
+  return(final_indeed_data)
+}
+#apply function to the data frame to rename all the variables correctly
+final_indeed_data <- rename_var(indeed_data)
+#save as RDS file
+saveRDS(object = final_indeed_data, file = "final_indeed_data.rds")
+}
+

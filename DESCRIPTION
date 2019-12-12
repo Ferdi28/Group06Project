@@ -13,9 +13,7 @@ License: GNU
 Encoding: UTF-8
 LazyData: true
 Imports: 
-  Rcpp,
   shiny(>= 1.4.0),
   tidyverse,
-  ggplot2,  
-  useful 
+  ggplot2
 RoxygenNote: 7.0.1
