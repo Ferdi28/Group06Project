@@ -2,6 +2,8 @@
 #' @description Create a data frame with indeed jobs based on the categories selected.
 #' ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
 #' Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
+#'Category suggestions: "marketing", "insurance", "economics",
+#"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
 #' @param category {character vector} with inputed values of the job categories you would like to scrape
 #' @param category {integer} to select the amount of pages to be scraped
 #' @return A  \code Data Frame containing the following attributes:
@@ -16,13 +18,14 @@ indeed_scraping <- function( category = c("data", "finance", "business"), number
   library(rvest)
   library(urltools)
   library(stringr)
-  # category suggestions: "marketing", "insurance", "economics",
-  #"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
+
 category <- category
+#test category object
 if (length(category) == 1 | length(category) == 0 | class(category) != "character"){
   stop("Please ensure that you select at least two job categories and write them with brackets, separated by commas in a c()")
 }
 number_of_pages <- number_of_pages
+#test number of pages object
 if (number_of_pages == 1 | length(number_of_pages) == 0 | class(number_of_pages) != "numeric" |  number_of_pages %% 1 != 0){
   stop("Please ensure that you select at least two pages and that it is an integer")
 }
