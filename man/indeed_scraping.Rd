@@ -6,7 +6,7 @@
 \usage{
 indeed_scraping(
   category = c("data", "finance", "business"),
-  number_of_pages = 9
+  number_of_pages = 2
 )
 }
 \arguments{
