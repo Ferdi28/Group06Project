@@ -10,7 +10,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                   sidebarLayout(
 
                       sidebarPanel(
+
                           h3("by Emily, Rebecca, Niels, Edvard and Ferdinando"),
+
                           tags$div(
                               HTML("<strong>Welcome to our Shiny App, here is a little guide to our app:</strong> </br></br>
                                  <strong>1.</strong> Load our latest dataset of Indeed Job listings. An initial map with all the job listings in Switzerland will be displayed.
