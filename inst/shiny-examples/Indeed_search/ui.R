@@ -14,7 +14,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
 
                           tags$div(
                               HTML("<strong>Welcome to our Shiny App, here is a little guide to our app:</strong> </br></br>
-                                 <strong>1.</strong> Load our latest dataset of Indeed Job listings. An initial map with all the job listings in Switzerland will be displayed.
+                                 <strong>1.</strong> Select our latest dataset of Indeed Job listings and click on <strong>Load Data Base/Display Map</strong>. An initial map with all the job listings in Switzerland will be displayed.
                                </br> </br><strong>2.</strong> If you would like to filter by Job Category, make sure to select them and click the <strong>Confirm Choice </strong> button.
                               </br> </br> <strong>3.</strong> Selecting the <strong>Map With Selected Categories</strong> option will display the map with the filters you chose.
                               </br> </br> <strong>4.</strong> You can update the map with the filters by clicking on <strong>Confirm Choice</strong> and having the <strong>Map
