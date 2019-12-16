@@ -4,16 +4,13 @@
 \alias{indeed_scraping}
 \title{Indeed web scraping}
 \usage{
-indeed_scraping(
-  category = c("data", "finance", "business"),
-  number_of_pages = 2
-)
+indeed_scraping(category = c("data", "finance", "business"),
+  number_of_pages = 2)
 }
 \arguments{
-\item{category}{{integer} to select the amount of pages to be scraped}
-}
-\value{
+\item{category}{{character vector} with inputed values of the job categories you would like to scrape}
 
+\item{category}{{integer} to select the amount of pages to be scraped}
 }
 \description{
 Create a data frame with indeed jobs based on the categories selected.
