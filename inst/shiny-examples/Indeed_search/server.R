@@ -4,6 +4,8 @@ library(leaflet)
 library(tidyverse)
 
 shinyServer(function(input, output) {
+  #make sure that the size of data base is not too big
+  options(shiny.maxRequestSize=30*1024^2)
 
   #make Leaflet output change in size based on user preferences
   output$leaf=renderUI({

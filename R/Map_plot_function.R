@@ -25,7 +25,7 @@ map_ready_df <- function(final_indeed_data, cities_coord){
   }
  # create data frame with coordinates
   final_indeed_data %>%
-    merge( y=cities_coord, by = intersect("city", "city"), all.x=TRUE)
+    inner_join(cities_coord, by = "city")
 }
 
 #' @title Indeed interactive Map
