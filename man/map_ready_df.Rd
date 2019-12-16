@@ -11,6 +11,9 @@ map_ready_df(final_indeed_data, cities_coord)
 
 \item{cities_coord}{A {Data Frame} with swiss cities names and respective Latitude/Longitude, also provided with this package}
 }
+\value{
+
+}
 \description{
 Create a data frame with indeed jobs and their corresponding latitude longitude based on the city
 \cr Please make sure you use the following code in order to have the data for the appropriate job category:\cr

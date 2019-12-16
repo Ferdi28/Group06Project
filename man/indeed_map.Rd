@@ -9,6 +9,9 @@ indeed_map(map_ready_df)
 \arguments{
 \item{map_ready_df}{A {Data Frame} result of the output of the function of the same name}
 }
+\value{
+
+}
 \description{
 create an interactive map of the indeed data frame created with map_ready_df function.
 It displays the job offers' location, its type and its external link to the indeed website
