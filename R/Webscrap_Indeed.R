@@ -12,7 +12,7 @@
 #' @examples
 #'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
-indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 9){
+indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 99){
   library(robotstxt)
   library(xml2)
   library(rvest)
@@ -141,6 +141,8 @@ indeed_data <- data.frame(job_title = job_titles_vector,
                       job_description = job_description,
                       link = link_vector)
 
+no_duplicate_cols <- c("job_title","company", "city", "category")
+indeed_data <- indeed_data[!duplicated(indeed_data[, no_duplicate_cols]), ]
 
 #label categories more understandable
 rename_var <- function(indeed_data){
