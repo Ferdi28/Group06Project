@@ -12,7 +12,7 @@
 #' @examples
 #'indeed_scraping(category = c("data", "finance", "business"))
 #' @export
-indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 99){
+indeed_scraping <- function( category = c("data", "finance", "business"), number_of_pages = 2){
   library(robotstxt)
   library(xml2)
   library(rvest)

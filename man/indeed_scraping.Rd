@@ -6,7 +6,7 @@
 \usage{
 indeed_scraping(
   category = c("data", "finance", "business"),
-  number_of_pages = 9
+  number_of_pages = 2
 )
 }
 \arguments{
@@ -19,6 +19,7 @@ indeed_scraping(
 Create a data frame with indeed jobs based on the categories selected.
 ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
 Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
+Category suggestions: "marketing", "insurance", "economics",
 }
 \examples{
 indeed_scraping(category = c("data", "finance", "business"))
