@@ -2,10 +2,10 @@
 #' @description Create a data frame with indeed jobs based on the categories selected.
 #' ATTENTION : Run to update the dataframe containing the information about the jobs listed at Indeed.
 #' Include more or less categories depending on computing power of your computer (Four categories takes about 45 minutes)
-#'Category suggestions: "marketing", "insurance", "economics",
-#"analyst", "accounting", "consulting", "entrepreneur", "HR", "management", "communication", "government"
+#'Category possibilities: "marketing", "economics", "data", "Business", "consulting", "HR", "management",
+#'"communication", "business".
 #' @param category {character vector} with inputed values of the job categories you would like to scrape
-#' @param category {integer} to select the amount of pages to be scraped
+#' @param category {integer} to select the amount of pages to be scraped "
 #' @return A  \code Data Frame containing the following attributes:
 #' \describe{
 #'      \item{7 variables linked to job offers from indeed}
@@ -141,6 +141,7 @@ indeed_data <- data.frame(job_title = job_titles_vector,
                       job_description = job_description,
                       link = link_vector)
 
+#remove duplicates if categories overlap between each other
 no_duplicate_cols <- c("job_title","company", "city", "category")
 indeed_data <- indeed_data[!duplicated(indeed_data[, no_duplicate_cols]), ]
 
